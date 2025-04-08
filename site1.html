@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibn Battouta - Explorer of the World</title>
+  <link rel="stylesheet" href="site1.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <h1>Fatima Faiz</h1>
+    <p>Profeseur de langue marocaine</p>
+  </header>
+  <button id="toggle-theme"><i class="fa-regular fa-circle-half-stroke"></i></button>
+  <nav>
+    <a href="#life">Life</a>
+    <a href="#exploits">Exploits</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
+
+  <div class="container">
+    <section id="life" class="section">
+      <h2>Her Life</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel voluptatem, repudiandae amet alias sequi quod ex, quasi provident voluptatibus dignissimos voluptates temporibus natus accusamus unde voluptas consequatur illo animi? Praesentium.
+      </p>
+    </section>
+
+    <section id="exploits" class="section">
+      <h2>Famous Exploits</h2>
+      <ul>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam earum labore, dignissimos ea quaerat sed nobis animi cumque quasi laborum placeat magnam eligendi, aut laboriosam velit rem impedit quos consequatur.</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut inventore nulla eum voluptatem omnis? Doloribus tenetur porro nihil at laboriosam, culpa repudiandae perspiciatis esse iste, exercitationem dignissimos sequi odio sed!</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, possimus, assumenda error est tempore eveniet id ducimus dignissimos veritatis exercitationem nihil voluptate quas corporis tempora repellat quidem expedita! Iure, cum.</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem expedita accusamus corrupti, totam fugit inventore molestiae assumenda eveniet ipsum. In quas voluptatibus beatae doloribus aspernatur debitis error veritatis at voluptatem.</li>
+      </ul>
+    </section>
+
+    <section id="gallery" class="section photos">
+      <h2>Photos & Illustrations</h2>
+      <img src= alt="Ibn Battouta Portrait" />
+      <img src= alt="Ibn Battouta's Travel Map" />
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Fatima Faiz Site - Created by Ilyasse</p>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById('toggle-theme');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>
