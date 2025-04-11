@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اختبار اكتشاف المهنة المناسبة</title>
+  <style>
+    body {
+      font-family: 'Tajawal', Arial, sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    h2 {
+      color: #009688;
+      text-align: center;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 3px;
+      background-color: #FFC107;
+    }
+    
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #444;
+    }
+    
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-family: 'Tajawal', Arial, sans-serif;
+      font-size: 16px;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    
+    select:focus {
+      outline: none;
+      border-color: #009688;
+      box-shadow: 0 0 5px rgba(0,150,136,0.3);
+    }
+    
+    button {
+      background-color: #009688;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+      transition: all 0.3s;
+      font-family: 'Tajawal', Arial, sans-serif;
+    }
+    
+    button:hover {
+      background-color: #00796b;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    #result {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+      border-right: 4px solid #4CAF50;
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .question-group {
+      margin-bottom: 25px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+  </style>
+</head>
+<body>
+  <h2>ما هي المهنة المناسبة لك؟</h2>
+  <form id="careerForm">
+    <div class="question-group">
+      <label>ما هي المادة التي تفضلها؟</label>
+      <select name="subject">
+        <option value="" disabled selected>اختر المادة المفضلة</option>
+        <option value="math">الرياضيات</option>
+        <option value="biology">الأحياء</option>
+        <option value="art">الفن</option>
+        <option value="tech">التكنولوجيا</option>
+        <option value="languages">اللغات</option>
+        <option value="socialstudies">الدراسات الاجتماعية</option>
+      </select>
+    </div>
+    
+    <div class="question-group">
+      <label>هل تفضل العمل مع:</label>
+      <select name="style">
+        <option value="" disabled selected>اختر نمط العمل</option>
+        <option value="people">الناس</option>
+        <option value="machines">الآلات</option>
+        <option value="ideas">الأفكار</option>
+        <option value="data">البيانات</option>
+        <option value="creative">الإبداع</option>
+      </select>
+    </div>
+    
+    <div class="question-group">
+      <label>ما هي البيئة التي تفضل العمل فيها؟</label>
+      <select name="environment">
+        <option value="" disabled selected>اختر بيئة العمل</option>
+        <option value="office">مكتب</option>
+        <option value="outdoor">بيئة خارجية</option>
+        <option value="lab">مختبر</option>
+        <option value="remote">عن بعد</option>
+        <option value="mixed">بيئة مختلطة</option>
+      </select>
+    </div>
+    
+    <button type="submit">اكتشف مهنتك المناسبة</button>
+  </form>
+  <div id="result"></div>
+  
+  <script>
+    document.getElementById("careerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const subject = e.target.subject.value;
+      const style = e.target.style.value;
+      const environment = e.target.environment.value;
+      
+      let result = "";
+      
+      // تحليل النتائج بناءً على الاختيارات
+      if (subject === "math") {
+        if (style === "ideas") {
+          if (environment === "office" || environment === "remote") 
+            result = "يمكنك أن تصبح مهندسًا رياضيًا أو محلل بيانات أو خبير إحصاء.";
+          else if (environment === "lab") 
+            result = "قد تكون باحثًا في علوم الرياضيات التطبيقية أو مهندس تجارب.";
+          else 
+            result = "يمكنك أن تصبح عالم رياضيات أو باحث في مجال البحث العملياتي.";
+        } else if (style === "people") {
+          result = "قد تكون مدرس رياضيات أو مستشار مالي أو خبير اقتصادي.";
+        } else if (style === "machines") {
+          result = "يمكنك العمل في مجال البرمجة المالية أو المحاكاة الرياضية أو تطوير الخوارزميات.";
+        } else if (style === "data") {
+          result = "أنت مناسب للعمل كإحصائي أو عالم بيانات أو محلل مالي.";
+        } else if (style === "creative") {
+          result = "يمكنك العمل في تصميم النماذج الرياضية أو تطوير الألعاب أو علوم الكمبيوتر الإبداعية.";
+        }
+      } else if (subject === "biology") {
+        if (style === "people") {
+          if (environment === "office" || environment === "lab") 
+            result = "قد تكون طبيبًا أو صيدلانيًا أو معالجًا.";
+          else if (environment === "outdoor") 
+            result = "يمكنك أن تصبح باحثًا بيئيًا أو متخصصًا في المجال الزراعي.";
+          else 
+            result = "قد تكون مناسبًا للعمل في مجال الصحة العامة أو التثقيف الصحي.";
+        } else if (style === "ideas" || style === "data") {
+          result = "قد تكون باحثًا في علم الأحياء أو عالم وراثة أو متخصصًا في المعلوماتية الحيوية.";
+        } else {
+          result = "يمكنك العمل في مجال التكنولوجيا الحيوية أو علوم المختبرات أو البحث الطبي.";
+        }
+      } else if (subject === "art") {
+        if (style === "creative") {
+          if (environment === "office" || environment === "remote") 
+            result = "يمكنك أن تصبح مصممًا جرافيكيًا أو رسامًا رقميًا أو مصمم واجهات مستخدم.";
+          else 
+            result = "قد تكون فنانًا تشكيليًا أو نحاتًا أو مصمم ديكور.";
+        } else if (style === "people") {
+          result = "قد تكون مدرس فنون أو معالج بالفن أو مدير معرض فني.";
+        } else {
+          result = "يمكنك العمل في مجال التصميم الصناعي أو الهندسة المعمارية أو تصميم الأزياء.";
+        }
+      } else if (subject === "tech") {
+        if (style === "machines") {
+          if (environment === "lab") 
+            result = "قد تكون مهندس روبوتات أو مطور أجهزة أو مهندس إلكترونيات.";
+          else 
+            result = "يمكنك أن تصبح مبرمجًا أو مهندس برمجيات أو مطور تطبيقات.";
+        } else if (style === "data") {
+          result = "أنت مناسب للعمل كمحلل بيانات ضخمة أو مهندس ذكاء اصطناعي أو متخصص في علم البيانات.";
+        } else if (style === "ideas") {
+          result = "قد تكون مصمم منتجات تقنية أو باحث في مجال التكنولوجيا أو مطور استراتيجيات تقنية.";
+        } else {
+          result = "يمكنك العمل في مجال أمن المعلومات أو إدارة المشاريع التقنية أو دعم تكنولوجيا المعلومات.";
+        }
+      } else if (subject === "languages") {
+        if (style === "people") {
+          result = "قد تكون مترجمًا أو مدرس لغات أو خبير اتصالات.";
+        } else if (style === "creative") {
+          result = "يمكنك أن تصبح كاتبًا أو محررًا أو متخصصًا في التسويق المحتوى.";
+        } else {
+          result = "قد تكون لغويًا أو باحثًا في علوم اللغة أو متخصصًا في معالجة اللغات الطبيعية.";
+        }
+      } else if (subject === "socialstudies") {
+        if (style === "people") {
+          result = "قد تكون أخصائيًا اجتماعيًا أو مستشارًا أو خبيرًا في الموارد البشرية.";
+        } else if (style === "data") {
+          result = "يمكنك العمل كباحث اجتماعي أو محلل سياسات أو خبير ديموغرافي.";
+        } else {
+          result = "قد تكون متخصصًا في العلاقات الدولية أو الإدارة العامة أو التنمية المجتمعية.";
+        }
+      } else {
+        result = "جرب استكشاف مجالات مختلفة لاكتشاف ما يناسبك. قد تحتاج إلى مزيد من التفكير في اهتماماتك ومهاراتك.";
+      }
+      
+      const resultElement = document.getElementById("result");
+      resultElement.innerText = result;
+      resultElement.style.display = "block";
+      
+      // تأثير التمرير إلى النتيجة
+      setTimeout(() => {
+        resultElement.scrollIntoView({behavior: "smooth"});
+      }, 100);
+    });
+  </script>
+</body>
+</html> 
